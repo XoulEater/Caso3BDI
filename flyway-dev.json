@@ -16,6 +16,12 @@
           "type": "UsernamePassword",
           "url": "jdbc:sqlserver://localhost:1433;databaseName=esencialVerde;encrypt=true;integratedSecurity=true;trustServerCertificate=true"
         }
+      },
+      {
+        "connectionProvider": {
+          "type": "UsernamePassword",
+          "url": "jdbc:sqlserver://localhost:1433;databaseName=master;encrypt=true;integratedSecurity=true;trustServerCertificate=true"
+        }
       }
     ]
   }
