@@ -1,4 +1,5 @@
-CREATE OR ALTER PROCEDURE generarContainers @cantidad int
+CREATE OR ALTER PROCEDURE generarContainers 
+    @cantidad int
 AS
 BEGIN
 	DECLARE @contador INT;
@@ -14,7 +15,7 @@ BEGIN
 				   ,[computer]
 				   ,[username])
 			 VALUES
-				   ( FLOOR(RAND()*(100)+1), FLOOR(RAND()*(23 - 4 + 1)+4), GETDATE(),'Computer1','user1');
+				   ( FLOOR(RAND()*(100)+1), FLOOR(RAND()*(20 + 1)), GETDATE(),'Computer1','user1');
         SET @contador = @contador + 1;
     END;
 

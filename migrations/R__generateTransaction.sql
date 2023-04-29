@@ -1,13 +1,4 @@
-CREATE TYPE transactionData 
-   AS TABLE
-      (actorID INT, 
-	  monto MONEY,
-	  posttime DATETIME,
-	  monedaID INT);
-GO
-
--- Ejemplo profe
-CREATE PROCEDURE generateTransaction
+CREATE OR ALTER PROCEDURE generateTransaction
     @TVP transactionData READONLY,
 	@transactionTypeID SMALLINT,
 	@referenceID BIGINT
@@ -39,7 +30,7 @@ BEGIN
 		INSERT INTO [dbo].[transactionLogs]
 				   ([transactionTypeID],[referenceID],[monto],[posttime],[actorID],[discount],[monedaID],
 				   [createdAt],[computer],[username])
-		SELECT @transactionTypeID, @referenceID, CASE WHEN @transactionTypeID = 2 THEN monto ELSE monto END as montoCalc, posttime, actorID, 0, monedaID, posttime, 'computer1', 'user1'
+		SELECT @transactionTypeID, @referenceID, monto, posttime, actorID, 0, monedaID, posttime, 'computer1', 'user1'
 		FROM @TVP
 				   
 
