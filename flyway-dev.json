@@ -22,6 +22,17 @@
           "type": "UsernamePassword",
           "url": "jdbc:sqlserver://localhost:1433;databaseName=master;encrypt=true;integratedSecurity=true;trustServerCertificate=true"
         }
+      },
+      {
+        "connectionProvider": {
+          "type": "UsernamePassword",
+          "url": "jdbc:sqlserver://localhost:1433;authentication=sqlPassword;databaseName=esencialVerde;encrypt=true;trustServerCertificate=true",
+          "username": "whiit",
+          "password": {
+            "secretType": "DefaultSecretStore",
+            "name": "Flyway Desktop 25fc6427-32e7-469a-82bb-6b6b8ddb1ab8"
+          }
+        }
       }
     ]
   }

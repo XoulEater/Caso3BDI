@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "whiit",
+    "password": "12345678",
+    "database": "esencialVerde",
+    "host": "localhost",
+    "dialect": "mssql"
+  },
+  "test": {
+    "username": "whiit",
+    "password": "12345678",
+    "database": "esencialVerde",
+    "host": "localhost",
+    "dialect": "mssql"
+  },
+  "production": {
+    "username": "whiit",
+    "password": "12345678",
+    "database": "esencialVerde",
+    "host": "localhost",
+    "dialect": "mssql"
+  }
+}
+
+
