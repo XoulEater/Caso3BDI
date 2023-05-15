@@ -1,12 +1,29 @@
 import * as express from 'express';
 import { Logger } from '../common'
 import { EsencialController } from '../controllers'
-
-const app = express();
+const app = express();  
 const log = new Logger();
-// Es para el api
-app.post("/getcontainersPool", (req, res,next) => {
-    EsencialController.getInstance().getAllContainersPool(req.body.filter)
+//ORM
+
+/*
+import { Sequelize } from 'sequelize';
+import Actores from '../models/actores';
+
+const sequelize = new Sequelize('database', 'username', 'password', {
+    host: 'localhost',
+    dialect: 'mssql',
+    dialectOptions: {
+      options: {
+        encrypt: true, // Si estás utilizando una conexión cifrada (SSL/TLS) con SQL Server
+      },
+    },
+  });
+  const Project = Actores(sequelize)
+*/
+
+
+app.get("/getGananciasPool", (req, res, next) => {
+    EsencialController.getInstance().getGananciasPool()
     .then((data:any)=>{
         res.json(data);
     })
@@ -16,8 +33,8 @@ app.post("/getcontainersPool", (req, res,next) => {
     });
 });
 
-app.post("/getcontainersNoPool", async (req, res,next) => {
-    EsencialController.getInstance().getAllContainersNoPool(req.body.filter)
+app.get("/getGananciasNoPool", (req, res, next) => {
+    EsencialController.getInstance().getGananciasNoPool()
     .then((data:any)=>{
         res.json(data);
     })
@@ -25,6 +42,11 @@ app.post("/getcontainersNoPool", async (req, res,next) => {
         log.error(err);
         return "{msg: \"error\"}";
     });
+});
+
+
+app.get("/getcontainersORM", async (req, res) => {
+
 });
 
 export { app as esencialrouter };

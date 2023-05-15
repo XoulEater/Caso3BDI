@@ -28,15 +28,15 @@ export class EsencialController {
         return this.instance;
     }
 
-    public getAllContainersPool(filter: string) : Promise<any> 
+    public getGananciasPool()
     {
         const esencialData = new data_esencial();
-        return esencialData.getContainers(filter);
+        return esencialData.getGanancias();
     }
 
-    public getAllContainersNoPool(filter: string) : Promise<any> 
+    public getGananciasNoPool() 
     {
         const esencialData = new data_esencialNoPool();
-        return esencialData.getContainersNoPool(filter);
+        return esencialData.getGanancias();
     }
 }

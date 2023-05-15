@@ -1,0 +1,15 @@
+{
+    "dbOptions": {
+      "database": "esencialVerde",
+      "username": "whiit",
+      "password": "12345678",
+      "dialect": "mssql",
+      "host": "localhost",
+      "port": 1433,
+      "logging": false
+    },
+    "options": {
+      "type": "ts",
+      "dir": "models"
+    }
+  }
