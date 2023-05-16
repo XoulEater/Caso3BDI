@@ -2,6 +2,9 @@ import { Logger } from '../common'
 import { data_esencial } from '../repositories/data_esencial'
 import { data_esencialNoPool } from '../repositories/data_esencialNoPool'
 
+import {sequelize, showActores } from '../repositories/data_esencialORM';
+
+
 //Dice cual repositorio se va a usar
 
 export class EsencialController {
@@ -38,5 +41,11 @@ export class EsencialController {
     {
         const esencialData = new data_esencialNoPool();
         return esencialData.getGanancias();
+    }
+
+    public getGananciasORM()
+    {
+        const esencialData = showActores();
+        return esencialData;
     }
 }
