@@ -1,4 +1,4 @@
-CREATE OR ALTER PROCEDURE [dbo].[ventasJava]
+CREATE OR ALTER PROCEDURE [dbo].[dirtyRead]
 	-- Add the parameters for the stored procedure here
 	@productosGroup ProductosGroupType READONLY
 AS
@@ -22,7 +22,7 @@ BEGIN
 	SET @InicieTransaccion = 0
 	IF @@TRANCOUNT=0 BEGIN
 		SET @InicieTransaccion = 1
-		SET TRANSACTION ISOLATION LEVEL READ COMMITTED
+		SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
 		BEGIN TRANSACTION		
 	END
 	BEGIN TRY
@@ -56,7 +56,7 @@ BEGIN
 				ORDER BY loteID;
 				WAITFOR DELAY '00:00:10'
 				UPDATE l SET
-					existencias = CASE WHEN @cantidad < Existencias THEN existencias - @cantidad ELSE 0 END
+					existencias = existencias - @cantidad 
 				FROM Lotes l
 				INNER JOIN lotesXorden lo ON l.loteID = lo.loteID
 				WHERE lo.ordenID = @ordenID;
@@ -106,7 +106,7 @@ END
 
 DECLARE @tvp [dbo].[ProductosGroupType]
 INSERT INTO @tvp
-VALUES (NEWID(), 5, 10)
-EXEC [ventasJava] @tvp
+VALUES (NEWID(), 2, 30)
+EXEC dirtyRead @tvp
 
 select * from lotes
